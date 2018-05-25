@@ -14,9 +14,9 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     // @description to make the bugs reappear and to randomize the speed of speed
-    if (this.x > 510) {
+    if (this.x > 509) {
         this.x = -50;
-        this.speed = 100 + Math.floor(Math.random() * 225);
+        this.speed = 150 + Math.floor(Math.random() * 225);
     }
 
     // @description to handle collision of bugs and the player
@@ -24,8 +24,8 @@ Enemy.prototype.update = function(dt) {
         player.x + 80 > this.x &&
         player.y < this.y + 60 &&
         60 + player.y > this.y) {
-        player.x = 202;
-        player.y = 405;
+        player.x = 201;
+        player.y = 406;
     }
 };
 
@@ -66,6 +66,10 @@ enemyLocations.forEach(function(locY) {
     enemy = new Enemy(0, locY, 200);
     allEnemies.push(enemy);
 });
+
+
+// @description Inastantiates Player object
+var player = new Player(202, 405);
 
 
 // This listens for key presses and sends the keys to your
