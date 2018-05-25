@@ -1,3 +1,8 @@
+//@description variables for the modal
+let modal = document.getElementById('modal');
+let modalBody = document.getElementsByClassName('modal-body')[0];
+
+
 // @description Enemies our player must avoid
 // @param x & y the x and y coordinates of enemy
 var Enemy = function(x, y, speed) {
@@ -16,7 +21,7 @@ Enemy.prototype.update = function(dt) {
     // @description to make the bugs reappear and to randomize the speed of speed
     if (this.x > 509) {
         this.x = -50;
-        this.speed = 150 + Math.floor(Math.random() * 225);
+        this.speed = 120 + Math.floor(Math.random() * 225);
     }
 
     // @description to handle collision of bugs and the player
@@ -69,7 +74,21 @@ enemyLocations.forEach(function(locY) {
 
 
 // @description Inastantiates Player object
-var player = new Player(202, 405);
+var player = new Player(201, 406);
+
+
+function newGame() {
+    allEnemies = [];
+    enemyLocations = [64, 148, 229];
+
+    enemyLocations.forEach(function(locY) {
+        enemy = new Enemy(0, locY, 200);
+        allEnemies.push(enemy);
+    });
+
+    player.x = 201;
+    player.y = 406;
+}
 
 
 // @Deacription Handles the movement of the player
@@ -87,11 +106,10 @@ Player.prototype.handleInput = function(keyPress) {
         this.y += 83;
     }
     // @description when the player reaches the water
-    if (this.y < 0) {
+    if (this.y <= 0) {
         setTimeout(function() {
-            player.x = 201;
-            player.y = 406;
-        }, 1000);
+            openModal();
+        }, 500);
     }
 }
 
@@ -107,4 +125,36 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+
+//@description to open modal
+function openModal() {
+    modal.style.display = "block";
+}
+
+
+//@description to close modal
+document.getElementById('close').addEventListener('click', function() {
+    modal.style.display = "none";
+    newGame();
+});
+
+//@description to play again
+document.getElementById('play-again-button').addEventListener('click', function() {
+    modal.style.display = "none";
+    newGame();
+});
+
+//@description to close modal when window is clicked
+window.addEventListener('click', function closeModalOutside(e) {
+    if (e.target == modal) {
+        modal.style.display = 'none';
+        newGame();
+    }
+});
+
+//@description called to create a new board whenever page reloads
+window.addEventListener('load', function() {
+    newGame();
 });
