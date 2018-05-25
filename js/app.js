@@ -7,18 +7,34 @@ var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
+
+// Update the enemy's position
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    this.x += this.speed * dt;
+
+    // @description to make the bugs reappear and to randomize the speed of speed
+    if (this.x > 510) {
+        this.x = -50;
+        this.speed = 100 + Math.floor(Math.random() * 225);
+    }
+
+    // @description to handle collision of bugs and the player
+    if (player.x < this.x + 80 &&
+        player.x + 80 > this.x &&
+        player.y < this.y + 60 &&
+        60 + player.y > this.y) {
+        player.x = 202;
+        player.y = 405;
+    }
 };
 
-// Draw the enemy on the screen, required method for game
+
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 
 // @description Player object
 // @param x & y the x and y coordinates of the player
