@@ -45,6 +45,19 @@ var Player = function(x, y) {
 }
 
 
+// @description Updates the player's position
+Player.prototype.update = function(dt) {
+
+}
+
+
+// Draw the player on the screen
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.player), this.x, this.y);
+}
+
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
