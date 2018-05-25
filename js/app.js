@@ -86,6 +86,13 @@ Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'down' && this.y < 404) {
         this.y += 83;
     }
+    // @description when the player reaches the water
+    if (this.y < 0) {
+        setTimeout(function() {
+            player.x = 201;
+            player.y = 406;
+        }, 1000);
+    }
 }
 
 
