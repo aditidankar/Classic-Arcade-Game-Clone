@@ -1,6 +1,5 @@
 //@description variables for the modal
 let modal = document.getElementById('modal');
-let modalBody = document.getElementsByClassName('modal-body')[0];
 
 
 // @description Enemies our player must avoid
@@ -63,24 +62,20 @@ Player.prototype.render = function() {
 
 
 let allEnemies = [];
-let enemyLocations = [64, 148, 229];
-
-
-// @description Inastantiates Enemy object
-enemyLocations.forEach(function(locY) {
-    enemy = new Enemy(0, locY, 200);
-    allEnemies.push(enemy);
-});
+let enemyLocations = [];
 
 
 // @description Inastantiates Player object
-var player = new Player(201, 406);
+let player = new Player(201, 406);
 
 
+// @description function for new game
 function newGame() {
+    // @description array for storing the enemy and enemy locations
     allEnemies = [];
     enemyLocations = [64, 148, 229];
 
+    // @description Inastantiates Enemy object
     enemyLocations.forEach(function(locY) {
         enemy = new Enemy(0, locY, 200);
         allEnemies.push(enemy);
