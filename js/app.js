@@ -72,6 +72,23 @@ enemyLocations.forEach(function(locY) {
 var player = new Player(202, 405);
 
 
+// @Deacription Handles the movement of the player
+Player.prototype.handleInput = function(keyPress) {
+    if (keyPress == 'left' && this.x >= 0) {
+        this.x -= 102;
+    }
+    if (keyPress == 'right' && this.x < 404) {
+        this.x += 102;
+    }
+    if (keyPress == 'up' && this.y >= 0) {
+        this.y -= 83;
+    }
+    if (keyPress == 'down' && this.y < 404) {
+        this.y += 83;
+    }
+}
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
