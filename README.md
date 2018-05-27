@@ -1,6 +1,6 @@
 # Classic Arcade Game Clone: Fogger
 
-Frogger (フロッガー ((Begin of language: Japanese) Furoggā (End of language: Japanese))) is a (Title: 1981 in video gaming) 1981 (Title: Arcade game) arcade game developed by (Title: Konami) Konami. It is regarded as a classic from the (Title: Golden age of video arcade games) golden age of video arcade games, noted for its novel gameplay and theme. [Wikipedia]
+Frogger (フロッガー ((Begin of language: Japanese) Furoggā (End of language: Japanese))) is a (Title: 1981 in video gaming) 1981 (Title: Arcade game) arcade game developed by (Title: Konami) Konami. It is regarded as a classic from the (Title: Golden age of video arcade games) golden age of video arcade games, noted for its novel gameplay and theme. [Source: Wikipedia]
 
 ## FEND Instructions
 

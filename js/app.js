@@ -23,14 +23,7 @@ Enemy.prototype.update = function(dt) {
         this.speed = 120 + Math.floor(Math.random() * 225);
     }
 
-    // @description to handle collision of bugs and the player
-    if (player.x < this.x + 80 &&
-        player.x + 80 > this.x &&
-        player.y < this.y + 60 &&
-        60 + player.y > this.y) {
-        player.x = 201;
-        player.y = 406;
-    }
+    checkCollisions();
 };
 
 
@@ -62,8 +55,12 @@ Player.prototype.render = function() {
 
 
 let allEnemies = [];
-let enemyLocations = [];
+let enemyLocations = [64, 148, 229];
 
+enemyLocations.forEach(function(locY) {
+    enemy = new Enemy(0, locY, 200);
+    allEnemies.push(enemy);
+});
 
 // @description Inastantiates Player object
 let player = new Player(201, 406);
@@ -83,6 +80,20 @@ function newGame() {
 
     player.x = 201;
     player.y = 406;
+}
+
+
+// @description to handle collision of bugs and the player
+function checkCollisions() {
+    for (let i = 0, length1 = allEnemies.length; i < length1; i++) {
+        if (player.x < allEnemies[i].x + 80 &&
+            player.x + 80 > allEnemies[i].x &&
+            player.y < allEnemies[i].y + 60 &&
+            60 + player.y > allEnemies[i].y) {
+            player.x = 201;
+            player.y = 406;
+        }
+    }
 }
 
 
